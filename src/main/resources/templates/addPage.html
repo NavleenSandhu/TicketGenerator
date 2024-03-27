@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" th:xmlns="www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Tickets</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div id="header">
+        <h1 style="color: black;">Get Tickets</h1>
+        <a href="/"><button>Home</button></a>
+    </div>
+    <div id="main">
+        <form action="/add" method="post" th:object="${ticket}">
+            <input type="hidden" th:field="*{id}">
+            <label for="userId">User Name<span>*</span></label><br>
+            <select th:field="*{userId}">
+                <option th:each="user:${users}" th:value="${user.userId}" th:text="${user.userName}"></option>
+            </select><br>
+            <label for="fullName">Full Name<span>*</span></label><br>
+            <input type="text" th:field="*{fullName}" required><br>
+            <label for="campus">Event Campus<span>*</span></label><br>
+            <select th:field="*{campus}">
+                <option value="Davis">Davis</option>
+                <option value="HMC">HMC</option>
+                <option value="Trafalgar">Trafalgar</option>
+            </select><br>
+            <label for="price">Ticket Type<span>*</span></label><br>
+            <select th:field="*{price}">
+                <option value="5.99">Alumni(5.99)</option>
+                <option value="9.99">Outsider(9.99)</option>
+            </select><br>
+            <label for="phone">Phone Number(1234567890)<span>*</span></label><br>
+            <input type="tel" th:field="*{phone}" pattern="[0-9]{10}" required><br>
+            <label for="email">Email<span>*</span></label><br>
+            <input type="email" th:field="*{email}" required><br>
+            <label for="city">City<span>*</span></label><br>
+            <input type="text" th:field="*{city}" required><br>
+            <button type="submit">Add</button>
+        </form>
+        <div id="card">
+            <img src="/images/SheridanLogo.png" height="70%" alt="sheridan-logo">
+        </div>
+    </div>
+</body>
+
+</html>

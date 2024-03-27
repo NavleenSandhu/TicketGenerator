@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="en" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tickets</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div id="container">
+        <a href="/"><button style="float: right;">Home</button></a>
+        <h1 style="color: black; margin: 0;">Registrations</h1>
+        <table th:with="totalAmount=0">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Event Campus</th>
+                    <th>Price</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ticket: ${tickets}" th:if="${role == 'ROLE_GUEST' and userId == ticket.userId}" th:with="totalAmount=${totalAmount + ticket.price}">
+                    <td th:text="${ticket.fullName}"></td>
+                    <td th:text="${ticket.campus}"></td>
+                    <td th:text="${ticket.price}"></td>
+                    <td th:text="${ticket.phone}"></td>
+                    <td th:text="${ticket.email}"></td>
+                    <td th:text="${ticket.city}"></td>
+                </tr>
+                <tr th:each="ticket: ${tickets}"  th:if="${role == 'ROLE_VENDER'}" >
+                    <td th:text="${ticket.fullName}"></td>
+                    <td th:text="${ticket.campus}"></td>
+                    <td th:text="${ticket.price}"></td>
+                    <td th:text="${ticket.phone}"></td>
+                    <td th:text="${ticket.email}"></td>
+                    <td th:text="${ticket.city}"></td>
+                    <td><a style="color: black; font-weight: bold;" th:href="@{/edit/{id}(id=${ticket.id})}">Edit</a></td>
+                    <td><a style="color: black; font-weight: bold;" th:href="@{/delete/{id}(id=${ticket.id})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <p th:if="${role == 'ROLE_GUEST'}"></p>
+        <p th:if="${role == 'ROLE_GUEST'}"></p>
+        <p th:if="${role == 'ROLE_GUEST'}"></p>
+    </div>
+    <script>
+        let rows=document.querySelectorAll("tbody tr");
+        let sum=0.0;
+        rows.forEach(row=>{
+            sum+=parseFloat(row.querySelector("td:nth-child(3)").innerHTML);
+        })
+        document.querySelector("p:nth-of-type(1)").innerHTML="Subtotal Amount: "+sum;
+        document.querySelector("p:nth-of-type(2)").innerHTML="Total Taxes: "+Math.round(sum*0.13*100)/100;
+        document.querySelector("p:nth-of-type(3)").innerHTML="Total Amount: "+Math.round(sum*1.13*100)/100;
+    </script>
+</body>
+
+</html>

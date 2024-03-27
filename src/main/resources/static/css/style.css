@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+body {
+    font-family: 'Libre Caslon Text', serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-image: url(/images/RoboticsBackground.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#sheridan-logo {
+    height: 20vh;
+}
+
+h1 {
+    color: white;
+    font-size: 10vh;
+}
+
+h2 {
+    color: white;
+    font-size: 7vh;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    background-color: #183B66;
+    color: white;
+    font-size: 3vh;
+    font-weight: bold;
+    font-family: 'Libre Caslon Text', serif;
+    height: 8vh;
+    border-radius: 2vh;
+    padding: 2vh;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: white
+}
+
+#main {
+    display: flex;
+    justify-content: space-around;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#card {
+    display: flex;
+    background-image: url(/images/RoboticsBackground.jpg);
+    background-size: cover;
+    height: 40vh;
+    width: 60vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3vh;
+}
+
+input[type=text],
+input[type=tel],
+input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+input[type=radio] {
+    margin: 10px;
+}
+
+span {
+    color: red;
+}
+
+label {
+    font-weight: bold;
+}
+
+form {
+    border: 1px solid black;
+    background-color: #E9FAFF;
+    padding: 25px;
+    border-radius: 3vh;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    background-color: white;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+#container {
+    height: 100vh;
+    width: 100vw;
+    background-color: #E9FAFF;
+}
+thead{
+	font-size: 20px;
+}
